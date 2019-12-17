@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://login.salesforce.com/services/oauth2/token",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
