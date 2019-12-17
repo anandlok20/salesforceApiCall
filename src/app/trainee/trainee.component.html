@@ -1,6 +1,19 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-3">Account</h1>
+        <h1 class="display-3">Create Contact</h1>
         <hr class="my-2">
     </div>
+</div>
+<div style="width: 400px;padding: 20px;margin-left: 200px">
+    <form>
+        <div class="form-group">
+            <label for="lname">First Name</label>
+            <input type="text" name="lname" id="lname" [(ngModel)]="cData.FirstName" class="form-control" placeholder="FirstName" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Last Name</label>
+            <input type="text" name="phone" id="phone" [(ngModel)]="cData.LastName" class="form-control" placeholder="LastName" required>
+        </div>
+        <button class="btn btn-primary" type="submit" (click)="submitData()">Create Contact</button>
+    </form>
 </div>

@@ -1,75 +1,51 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { HttpClient, HttpRequest, HttpHandler, HttpResponse, HttpHeaders } from "@angular/common/http";
-import { config } from './config';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import {
+  HttpClient,
+  HttpRequest,
+  HttpHandler,
+  HttpResponse,
+  HttpHeaders
+} from "@angular/common/http";
+import { map } from "rxjs/operators";
+import { Observable } from "rxjs";
+import { traineeSchema } from './traineeSchema';
+import { contactSchema } from './contactSchema';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class TraineeService {
-  data = {
-    username: 'alok2@enzigma.com',
-    password: 'test@1239ztBcKFlQlHkMfHNLtz4fNw3',
-    grant_type: 'password',
-    client_id: '3MVG9n_HvETGhr3BO1H9Ni1aKEHTCDIIRtLjdbhlcFha2PAK.owCr3D0ChczN5iqwJekWv3tQ_pDqLjE8jjGv',
-    client_secret: '0D9F82A12D821E1A2C6168462CAA5A15D3C56BDBE53644D0B632A9B977FB3C1C',
-  };
-  d1: any;
+
   constructor(private httpClient: HttpClient, private route: Router) {
-    const header=new HttpHeaders();
-
-    this.httpClient.get<config>('https://login.salesforce.com/services/oauth2/token', {headers:this.data}).subscribe(data1 => {
-      this.d1 = data1;
-  })
-
+  
 
     // const res1 = this.validUser();
     // console.log('res1',res1);
     // console.log('d1',this.d1)
 
-    // const headers = new HttpHeaders({ Authorization: 'Basic' + btoa(u.username + ':'+ u.password) });
+  }
+  auth_token =
+  "Bearer 00D2w000000nT0a!AQQAQCzhknn3babjvOsa_eKHjmdylo.pCKiK75Z87hTmTN2MKNbfz59xfMLlz4HqGMuS_zy8zahuY6GVAe0uaGjM_hQqqetA";
+  headers = new HttpHeaders({
+    "Content-Type": "application/json",
+    Authorization: this.auth_token
+  });
 
-
-    // return this.http.get<any>(this.baseurl+"/validate?username="+u.username+"&"+"password="+u.password,{ headers }).pipe(
-    //     map(
-    //       userData => {
-    //         sessionStorage.setItem('access_token', u.username);
-    //         let authString = 'Bearer ' + btoa(u.username + ':' + u.password);
-    //         sessionStorage.setItem('basicauth', authString);
-    //         console.log("userdata"+userData);
-    //         return userData;
-    //       }
-    //     )
-
-    //   );
-
-    // return this.http.get<any>(this.baseurl+"/validate?username="+u.username+"&"+"password="+u.password,{ headers }).pipe(
-    //   map(
-    //     userData => {
-    //       sessionStorage.setItem('username', u.username);
-    //       let authString = 'Basic ' + btoa(u.username + ':' + u.password);
-    //       sessionStorage.setItem('basicauth', authString);
-    //       console.log("userdata"+userData);
-    //       return userData;
-    //     }
-    //   )
-
-    // );
-
+  getAllContacts() {
+    // headers.set("Access-Control-Allow-Origin","*");
+    return this.httpClient
+      .get<any>(
+        "https://alok2-dev-ed.my.salesforce.com/services/data/v39.0/sobjects/Contact",
+        { headers: this.headers }
+      )
   }
 
-  // validUser() {
-  //   return this.httpClient.post<config>('https://login.salesforce.com/services/oauth2/token', this.data).pipe(map(
-  //     res => {
-  //       this.d1=res;
-  //       sessionStorage.setItem('access_token',this.d1)
-  //       console.log('res', res);
-  //       return res;
-  //     }
-  //   ));
-  // }
-
-
+  createContact(cData : contactSchema){
+    return this.httpClient
+      .post<contactSchema[]>(
+        "https://alok2-dev-ed.my.salesforce.com/services/data/v39.0/sobjects/Contact",cData,
+        { headers: this.headers }
+      )
+  }
 }

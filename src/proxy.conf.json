@@ -1,6 +1,6 @@
 {
     "/api/*": {
-        "target": "https://login.salesforce.com/services/oauth2/token",
+        "target": "https://alok2-dev-ed.my.salesforce.com/services/data/v39.0/sobjects/Contact",
         "secure": false,
         "logLevel": "debug"
     }
