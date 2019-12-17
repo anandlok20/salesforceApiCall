@@ -5,10 +5,10 @@
             <hr class="my-2">
         </div>
     </div>
-    <button style="margin-left: 20px" class="btn btn-primary" (click)="viewContactForm()">Create Contact</button>
-    <button style="margin-left: 20px" class="btn btn-primary" (click)="viewContact()">View Contact</button>
-    <button style="margin-left: 20px" class="btn btn-primary" (click)="viewTraineeForm()">Create Trainee</button>
-    <button style="margin-left: 20px" class="btn btn-primary" (click)="viewTrainee()">View Contact</button>
+    <button style="margin-left: 200px" class="btn btn-primary" (click)="viewContactForm()">Create Contact</button>
+    <button style="margin-left: 200px" class="btn btn-primary" (click)="viewContactList()">View Contact</button>
+    <button style="margin-left: 200px" class="btn btn-primary" (click)="viewTraineeForm()">Create Trainee</button>
+    <button style="margin-left: 200px" class="btn btn-primary" (click)="viewTraineeList()">View Trainee</button>
 </div>
 <div *ngIf="showContact">
     <div class="jumbotron jumbotron-fluid">
@@ -58,4 +58,48 @@
             <button class="btn btn-primary" type="submit" (click)="submitDataForTrainee()">Create Contact</button>
         </form>
     </div>
+</div>
+<div *ngIf="viewContact">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3">Contacts</h1>
+            <hr class="my-2">
+        </div>
+    </div>
+    <table style="margin-left: 100px;padding: 40px">
+        <thead>
+            <tr>
+                <th style="border: solid;padding: 20px">Id</th>
+                <th style="border: solid;padding: 20px">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of contactData.recentItems">
+                <td style="border: solid;padding: 20px">{{item.Id}}</td>
+                <td style="border: solid;padding: 20px">{{item.Name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="viewTrainee">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3">Trainee</h1>
+            <hr class="my-2">
+        </div>
+    </div>
+    <table style="margin-left: 100px;padding: 40px">
+        <thead>
+            <tr>
+                <th style="border: solid;padding: 20px">Id</th>
+                <th style="border: solid;padding: 20px">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of traineeData">
+                <td style="border: solid;padding: 20px">{{item.Id}}</td>
+                <td style="border: solid;padding: 20px">{{item.Name}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

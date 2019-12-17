@@ -7,8 +7,6 @@ import {
   HttpResponse,
   HttpHeaders
 } from "@angular/common/http";
-import { map } from "rxjs/operators";
-import { Observable } from "rxjs";
 import { traineeSchema } from './traineeSchema';
 import { contactSchema } from './contactSchema';
 
@@ -18,11 +16,6 @@ import { contactSchema } from './contactSchema';
 export class TraineeService {
 
   constructor(private httpClient: HttpClient, private route: Router) {
-  
-
-    // const res1 = this.validUser();
-    // console.log('res1',res1);
-    // console.log('d1',this.d1)
 
   }
   auth_token =

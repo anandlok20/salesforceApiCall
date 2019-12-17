@@ -16,6 +16,8 @@ export class TraineeComponent implements OnInit {
   showContact = false;
   showTrainee = false;
   showButton = true;
+  viewContact = false;
+  viewTrainee = false;
   selectedId: any;
   constructor(private tService: TraineeService) {}
 
@@ -73,11 +75,31 @@ export class TraineeComponent implements OnInit {
     this.showContact = true;
     this.showButton = false;
     this.showTrainee = false;
+    this.viewContact = false;
+    this.viewTrainee = false;
   }
 
   viewTraineeForm() {
     this.showContact = false;
     this.showTrainee = true;
     this.showButton = false;
+    this.viewContact = false;
+    this.viewTrainee = false;
+  }
+
+  viewContactList() {
+    this.showContact = false;
+    this.showTrainee = false;
+    this.showButton = false;
+    this.viewContact = true;
+    this.viewTrainee = false;
+  }
+
+  viewTraineeList() {
+    this.showContact = false;
+    this.showTrainee = false;
+    this.showButton = false;
+    this.viewContact = false;
+    this.viewTrainee = true;
   }
 }
