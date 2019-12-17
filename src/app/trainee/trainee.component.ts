@@ -9,24 +9,75 @@ import { contactSchema } from "../services/contactSchema";
   styleUrls: ["./trainee.component.css"]
 })
 export class TraineeComponent implements OnInit {
-  resData: any;
-  tData: traineeSchema = { Name: "", MobilePhone: "", Email: "" };
+  contactData: any;
+  traineeData: any;
+  tData: traineeSchema = { fname: "", lname: "", email: "" };
   cData: contactSchema = { FirstName: "", LastName: "" };
+  showContact = false;
+  showTrainee = false;
+  showButton = true;
+  selectedId: any;
   constructor(private tService: TraineeService) {}
 
   ngOnInit() {
     this.tService.getAllContacts().subscribe(r => {
-      this.resData = r;
-      console.log("data", this.resData);
+      this.contactData = r;
+      console.log("data", this.contactData);
+    });
+    this.tService.getAllTrainee().subscribe(r => {
+      this.traineeData = r;
+      console.log("data", this.traineeData);
     });
   }
 
   submitData() {
     console.log("tData", this.cData);
-    if (this.cData.LastName==="") {
-      alert("Last Name is Required !!");
+    if (this.cData.LastName === "") {
+      document.getElementById("status").hidden = false;
+      document.getElementById("status").innerText = "Last Name is Required !!";
     } else {
       this.tService.createContact(this.cData).subscribe();
+      // this.showContact = false;
+      // this.showButton = true;
+      // this.showTrainee = false;
     }
+  }
+
+  submitDataForTrainee() {
+    console.log("tData", this.tData);
+    if (this.tData.lname === "") {
+      document.getElementById("status").hidden = false;
+      document.getElementById("status").innerText = "Last Name is Required !!";
+    }
+    if (this.tData.email === "") {
+      document.getElementById("statusEmail").hidden = false;
+      document.getElementById("statusEmail").innerText = "Email is Required !!";
+    } else {
+      this.tService.createTrainee(this.tData).subscribe();
+      // this.showContact = false;
+      // this.showButton = true;
+      // this.showTrainee = false;
+    }
+  }
+
+  findTraineeById() {
+    this.tService.getTraineeById(this.selectedId).subscribe();
+  }
+
+  resetValue() {
+    document.getElementById("status").hidden = true;
+    document.getElementById("statusEmail").hidden = true;
+  }
+
+  viewContactForm() {
+    this.showContact = true;
+    this.showButton = false;
+    this.showTrainee = false;
+  }
+
+  viewTraineeForm() {
+    this.showContact = false;
+    this.showTrainee = true;
+    this.showButton = false;
   }
 }

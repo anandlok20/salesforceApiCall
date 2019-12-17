@@ -5,7 +5,7 @@ import { TraineeComponent } from './trainee/trainee.component';
 
 const routes: Routes = [
   {path:'trainee',component:TraineeComponent},
-  {path:'',redirectTo:'/trainee',pathMatch:'full'}
+  {path:'',redirectTo:'/trainee',pathMatch:'full'},
 ];
 
 @NgModule({

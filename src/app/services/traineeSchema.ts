@@ -1,5 +1,5 @@
 export class traineeSchema{
-    Name;
-    MobilePhone;
-    Email
+    fname;
+    lname;
+    email;
 }
