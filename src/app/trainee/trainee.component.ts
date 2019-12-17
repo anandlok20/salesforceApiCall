@@ -38,7 +38,9 @@ export class TraineeComponent implements OnInit {
       document.getElementById("status").hidden = false;
       document.getElementById("status").innerText = "Last Name is Required !!";
     } else {
-      this.tService.createContact(this.cData).subscribe();
+      this.tService.createContact(this.cData).subscribe(r => {
+        alert("dataFromServer"+ r);
+      });
       // this.showContact = false;
       // this.showButton = true;
       // this.showTrainee = false;

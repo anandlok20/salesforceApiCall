@@ -28,7 +28,7 @@
                 <input type="text" name="lname" (click)="resetValue()" id="lname" [(ngModel)]="cData.LastName" class="form-control" placeholder="LastName" required>
             </div>
             <p id="status" style="color: red" hidden></p>
-            <button class="btn btn-primary" type="submit" (click)="submitData()">Create Contact</button>
+            <button class="btn btn-primary" type="button" (click)="submitData()">Create Contact</button>
         </form>
     </div>
 </div>
@@ -55,7 +55,7 @@
                 <input type="text" name="email" (click)="resetValue()" id="email" [(ngModel)]="tData.email" class="form-control" placeholder="Email" required>
             </div>
             <p id="statusEmail" style="color: red" hidden></p>
-            <button class="btn btn-primary" type="submit" (click)="submitDataForTrainee()">Create Contact</button>
+            <button class="btn btn-primary" type="button" (click)="submitDataForTrainee()">Create Contact</button>
         </form>
     </div>
 </div>
