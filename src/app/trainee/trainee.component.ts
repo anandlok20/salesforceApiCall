@@ -39,7 +39,9 @@ export class TraineeComponent implements OnInit {
       document.getElementById("status").innerText = "Last Name is Required !!";
     } else {
       this.tService.createContact(this.cData).subscribe(r => {
-        alert("dataFromServer"+ r);
+        console.log("dataFromServer", r);
+        document.getElementById("toast").hidden=false;
+        document.getElementById("toast").innerText="Contact created with ID: "+r.id;
       });
       // this.showContact = false;
       // this.showButton = true;
