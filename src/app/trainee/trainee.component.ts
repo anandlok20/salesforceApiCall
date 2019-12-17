@@ -104,4 +104,12 @@ export class TraineeComponent implements OnInit {
     this.viewContact = false;
     this.viewTrainee = true;
   }
+  
+  backTo(){
+    this.showContact = false;
+    this.showTrainee = false;
+    this.showButton = true;
+    this.viewContact = false;
+    this.viewTrainee = false;
+  }
 }
