@@ -43,7 +43,7 @@ export class TraineeService {
 
 
   auth_token =
-    "Bearer 00D2w000000nT0a!AQQAQCzhknn3babjvOsa_eKHjmdylo.pCKiK75Z87hTmTN2MKNbfz59xfMLlz4HqGMuS_zy8zahuY6GVAe0uaGjM_hQqqetA";
+    "Bearer 00D2w000000nT0a!AQQAQOC6L_4s7PUGKrj1uTmvb_hqT3qAmocJnTl12tNc6vGc8yglpOZyGk9G23gQT.uykWHyd6cFaZiQMP2q4EhcjkvCY.NZ";
   headers = new HttpHeaders({
     "Content-Type": "application/json",
     Authorization: this.auth_token

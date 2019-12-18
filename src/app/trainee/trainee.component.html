@@ -6,9 +6,9 @@
         </div>
     </div>
     <button style="margin-left: 200px" class="btn btn-primary" (click)="viewContactForm()">Create Contact</button>
-    <button style="margin-left: 200px" class="btn btn-primary" (click)="viewContactList()">View Contact</button>
+    <button style="margin-left: 200px" class="btn btn-primary" (click)="viewContactList()">View Contacts</button>
     <button style="margin-left: 200px" class="btn btn-primary" (click)="viewTraineeForm()">Create Trainee</button>
-    <button style="margin-left: 200px" class="btn btn-primary" (click)="viewTraineeList()">View Trainee</button>
+    <button style="margin-left: 200px" class="btn btn-primary" (click)="viewTraineeList()">View Trainees</button>
 </div>
 <div *ngIf="showContact">
     <div class="jumbotron jumbotron-fluid">
@@ -109,5 +109,38 @@
 </div>
 
 <ngb-toast header="Notification header" id="toast" hidden>
-    of the notification
+    <span id="toastSpan"></span>
 </ngb-toast>
+
+<div class="details">
+    <div>
+        <div class="btn-group" role="group" aria-label="Select Trainee">
+            <button type="button" class="btn btn-secondary">Select Trainee</button>
+            <div class="btn-group" role="group">
+                <button id="dropdownId" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+        </button>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownId">
+                    <div *ngFor="let item of traineeData" class="dropdown-item">
+                        <span (click)="findTraineeById(item.Id)">{{item.Name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div *ngIf="traineeDetailData">
+        <div class="card text-left" style="width: 500px">
+            <div class="card-body">
+                <h4 class="card-title">{{singleTraineeDetail.Full_Name__c}}</h4>
+                <p class="card-text">Trainee Id : {{singleTraineeDetail.Name}}</p>
+                <p class="card-text">Gender : {{singleTraineeDetail.Gender__c}}</p>
+                <p class="card-text">Date of Birth : {{singleTraineeDetail.Date_of_Birth__c}}</p>
+                <p class="card-text">Email : {{singleTraineeDetail.Email__c}}</p>
+                <p class="card-text">Trannie Profile : {{singleTraineeDetail.Trannie_Profile__c}}</p>
+                <p class="card-text">Training Status : {{singleTraineeDetail.Training_Status__c}}</p>
+            </div>
+        </div>
+    </div>
+</div>

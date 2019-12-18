@@ -7,6 +7,7 @@ import { TraineeComponent } from './trainee/trainee.component';
 import { TraineeService } from './services/trainee.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
-
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [TraineeService],
   bootstrap: [AppComponent]
