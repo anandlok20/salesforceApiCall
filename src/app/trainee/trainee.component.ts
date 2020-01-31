@@ -43,8 +43,8 @@ export class TraineeComponent implements OnInit {
       this.tService.createContact(this.cData).subscribe(r => {
         console.log("dataFromServer", r);
         document.getElementById("toast").hidden=false;
-        document.getElementById("toastSpan").innerText =
-          "Contact created with ID: " + r.id;
+        // document.getElementById("toastSpan").innerText =
+        //   "Contact created with ID: " + r.id;
       });
       this.showContact = false;
       this.showButton = true;
